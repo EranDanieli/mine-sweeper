@@ -1,0 +1,42 @@
+
+
+body{
+    background-color: rgb(85, 79, 79);
+}
+.center{
+    text-align: center;
+    margin-top: 20px;
+}
+.center span{
+   margin-bottom: 15px;
+   margin-left: 15px;
+}
+.table{
+    table-layout:fixed;
+    min-width: 524.8px;
+    min-height: 524.8px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;    
+
+}
+
+.cell{
+    background-color: lightblue;
+    height: 40px;
+    width: 40px;
+    opacity: 0.5;
+    text-align: center;
+    font-size: 25px;
+}
+.cell:hover{
+    cursor: pointer;
+}
+.clickedmine{
+    background-color: rgba(245, 12, 12) !important;
+    color: red;
+    /* TODO: figure out the fucking problem */
+}
+/* .clickedmine:hover{
+    cursor: grab;
+} */

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body onload="init()">
+
+    <div class="center">
+        <span><button data-number="0" onclick="clickedLevel(this)" >Easy</button></span>
+        <span><button data-number="1" onclick="clickedLevel(this)">Medium</button></span>
+        <span><button data-number="2" onclick="clickedLevel(this)">Hard</button></span>
+        
+    </div>
+    <div class="center">
+        <span><button onclick="init()">Restart - change to emoji</button></span>
+    </div>
+
+
+<table class="table">
+    <tbody >
+
+    </tbody>
+</table>
+<div> <h2>Lives:</h2> TODO </div>
+<div> <h2>Timer:</h2> TODO </div>
+
+    <script src="js/util.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
