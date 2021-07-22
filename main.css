@@ -2,23 +2,54 @@
 
 body{
     background-color: rgb(85, 79, 79);
+    margin: auto;
 }
 .center{
     text-align: center;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
-.center span{
-   margin-bottom: 15px;
-   margin-left: 15px;
-}
+
 .table{
     table-layout:fixed;
-    min-width: 524.8px;
-    min-height: 524.8px;
+    min-width: 556px;
+    min-height: 556px;
+    max-width: 556px;
+    max-height: 556px;
     margin: 20px;
     margin-left: auto;
-    margin-right: auto;    
-
+    margin-right: auto;   
+    border-spacing: 4px;
+}
+.container{
+height: 0px;
+width: 50%;
+margin-left: auto;
+margin-right: auto;
+}
+.left{
+    background-color: rgb(114, 104, 104);
+    border: 5px solid rgb(63, 59, 59);
+    border-radius: 10px;
+    float: left;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+      text-align: center;
+      width: 110px; 
+       margin:10px;
+}
+.right{
+    background-color: rgb(114, 104, 104);
+    border: 5px solid rgb(63, 59, 59);
+    border-radius: 10px;
+    float: right;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+      text-align: center;
+      width: 110px; 
+       margin:10px;
 }
 
 .cell{
@@ -33,10 +64,32 @@ body{
     cursor: pointer;
 }
 .clickedmine{
-    background-color: rgba(245, 12, 12) !important;
-    color: red;
-    /* TODO: figure out the fucking problem */
+    background-color: rgba(245, 12, 12) ;
 }
-/* .clickedmine:hover{
-    cursor: grab;
-} */
+
+
+div.center button{
+    background-color: rgb(114, 104, 104);
+    border: 5px solid rgb(63, 59, 59);
+    border-radius: 10px;
+    font-size: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 3px;
+    margin: 10px;
+}
+footer{
+    background-color: rgb(34, 146, 77);
+    font-size: 30px;
+    width: 556px;
+    text-align: center;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    width:960px;
+}
