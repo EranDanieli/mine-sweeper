@@ -7,6 +7,8 @@ var gLevelSelected = gLevel[0]
 var gLives = '3';
 const MINE = '💣'
 const FLAG = '🚩'
+const EMPTY = ' '
+var numOfSafeClick = 3;
 var gMinesLocations = [];
 var gInterval;
 var seconds = +0
@@ -20,6 +22,7 @@ var gGame = {
 
 
 function init() {
+    numOfSafeClick = 3;
     minesMarkedCounter=0
     gGame.markedCount=0;
     gGame.shownCount=0;
@@ -28,10 +31,11 @@ function init() {
     gGame.isVictory = false
     gBoard = createMat(gLevelSelected)
     gGame.isOn = false;
-    gLives = 3;
+    gLives = (gLevelSelected.mines===2)? 2 : 3;
     updateLives();
     document.querySelector('.restartbtn').innerHTML =
     `<div class="restartbtn center"> <span><button onclick="init()">😁</button></span> </div>`
+    document.getElementById('safeClickBtn').innerText= `${numOfSafeClick} Safe Clicks Left`
     printMat(gBoard, '.table')
 }
 
@@ -79,6 +83,10 @@ function printMat(mat, selector) {
 
             if (cell.isMarked) display = FLAG;
             if (cell.isShown && !cell.isMine) display = mat[i][j].minesAroundCount
+            if(cell.isShown && !cell.isMine&& cell.minesAroundCount===0 && gGame.isOn) {
+                display = EMPTY;
+                className = `cell emptyCell cell${i}${j}" data-i="${i}" data-j="${j}"`;
+            }
 
 
             strHTML += '<td onmouseup="getMouseClickEvent(event)" onclick="cellClicked(this)" class="' + className + '"> ' + display + ' </td>'
@@ -95,7 +103,6 @@ function insertMines(board, numOfMines) {
     for (var i = 0; i < numOfMines; i++) {
         var idx = getRandomInt(0, emptyCells.length)
         var cell = emptyCells[idx]
-        // console.log('cell with mine "insertMines', cell)
         gBoard[cell.i][cell.j].isMine = true;
         emptyCells.splice(idx, 1)
         gMinesLocations.push({ i: cell.i, j: cell.j })
@@ -105,7 +112,6 @@ function insertMines(board, numOfMines) {
 }
 
 function cellClicked(ev, click) {
-   
 
     if (gGame.isVictory) return
     if (gLives === 0) return
@@ -265,7 +271,6 @@ function checkVictoryByFlags() {
     for (var i = 0; i < gMinesLocations.length; i++) {
         if (gBoard[gMinesLocations[i].i][gMinesLocations[i].j].isMarked) minesMarkedCounter++
     }
-    console.log('minesMarkedCounter',minesMarkedCounter) //really helps testing
     if (gLevelSelected.mines === minesMarkedCounter ) { 
         showRestOfcells()
         victory()
@@ -331,3 +336,20 @@ for(var i = 0 ; i<gMinesLocations.length;i++){
 }
 }
 
+
+function safeClick(){
+    if(!gGame.isOn) return
+   if(numOfSafeClick<1)return
+   numOfSafeClick--
+    var currCells = getEmptyCells(gBoard)
+    var idx = getRandomInt(0,currCells.length-1)
+    var cell = currCells[idx]
+   var elCell = document.querySelector(`.cell${cell.i}${cell.j}`)
+   console.log('cell',cell)
+   console.log('elCell',elCell)
+   elCell.classList.add('safeclick')
+   setTimeout(function(){
+       elCell.classList.remove('safeclick')},1500)
+       document.getElementById('safeClickBtn').innerText= `${numOfSafeClick} Safe Clicks Left`
+
+}
